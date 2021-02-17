@@ -21,9 +21,9 @@ public class StandUpdateListener implements MessageListener {
 //    private StandNamedBean standNamedBean;
 
     @Inject
-    private TestBean testBean;
-//    @EJB
-//    private JsonParser jsonParser;
+    private TariffsBean tariffsBean;
+    @EJB
+    private JsonParser jsonParser;
 
     @Override
     public void onMessage(Message message) {
@@ -36,12 +36,13 @@ public class StandUpdateListener implements MessageListener {
     }
 
     private void processMessage(Message message) throws JMSException {
+        System.out.println("message: "+message);
         if (message instanceof TextMessage) {
             TextMessage textMessage = (TextMessage) message;
             String text = textMessage.getText();
-//            StandUpdateDto standUpdateDto = jsonParser.readStandDtoJSON(text);
-//            System.out.println(standUpdateDto);
-//            standNamedBean.updateStand(standUpdateDto);
+            TariffViewForm tariffViewForm = jsonParser.readTariffDtoJSON(text);
+            System.out.println(tariffViewForm);
+            System.out.println("TEXT = "+text);
             log.info("Message " + message.getJMSMessageID() + " has been processed");
         }
     }

@@ -4,7 +4,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
     <title>Hot Tariff Stand</title>
@@ -42,20 +43,9 @@
         </br>
 
     </nav>
-    <div class="card">
-        <h:form>
-            <h1 class="p-text-center">
-                <h:outputText id="txt_count" value="#{pollView.number}"/>
-            </h1>
-            <p:poll  interval="2" listener="#{pollView.increment}" update="txt_count"/>
-        </h:form>
-    </div>
-
     <h:form>
         <h:panelGroup id="group">
-            <!--<a4j:outputPanel event="onchange" render=":group" />-->
-            <!--         <h:outputText id="serverDate" style="font-size:16px" value="Server Date: #{Date}" />-->
-            <table class="table table-hover">
+           <table class="table table-hover">
             <thead class="thead-dark">
             <tr>
                 <th>Tariff</th>
@@ -63,34 +53,20 @@
             </tr>
             </thead>
             <tbody>
-
-            <c:forEach items="#{tariffsBean.tariffs}" var="tariff">
-                <tr>
-                    <td>
-                        <h:outputText value="#{tariff.name}"/>
-                    </td>
-                    <td>
-                        <h:outputText value="#{tariff.numberOfContracts}"/>
-                    </td>
-                </tr>
-            </c:forEach>
-
-
-<!--            </c:forEach>-->
-<!--            <h:body>-->
-<!--            </h:body>-->
-<!--            <ui:repeat var="tariff" value="#{testBean.tariffs}">-->
-<!--                &lt;!&ndash;<a4j:ajax event="onchange" render=":any-id" />&ndash;&gt;-->
-
-<!--                        <h:outputText value="#{tariff.name}"/>-->
-
-<!--                        <h:outputText value="#{tariff.description}"/>-->
-
-
-<!--            </ui:repeat>-->
-
-
-    </tbody>
+<!--            <h:panelGroup id="commentlist1">-->
+                <ui:repeat value="#{tariffsBean.tariffs}" var="v">
+                    <tr>
+                        <td>
+                            <div class="tariff-name">#{v.name}</div>
+                        </td>
+                        <td>
+                            <div class="tariff-contracts">#{v.numberOfContracts}</div>
+                        </td>
+                    </tr>
+                </ui:repeat>
+<!--            </h:panelGroup>-->
+            <p:poll update="group" interval="1" />
+            </tbody>
 </table>
 </h:panelGroup>
     </h:form>

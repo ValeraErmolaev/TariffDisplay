@@ -17,22 +17,6 @@ public class TariffViewForm {
     private String name;
     private String description;
     private Long numberOfContracts;
-//    private double price;
-//    private double turnOnPrice;
-//    private String pictureUrl;
-//    private boolean deprecated;
-//    private Set<Option> options;
-
-//    public TariffViewForm(Tariff tariff) {
-//        this.id = tariff.getId();
-//        this.name = tariff.getName();
-//        this.description = tariff.getDescription();
-//        this.price = tariff.getPrice();
-//        this.turnOnPrice = tariff.getPrice();
-//        this.options = tariff.getOptions();
-//        this.deprecated = tariff.isDeprecated();
-//        this.pictureUrl = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(tariff.getPicture().getPictureBytes());
-//    }
 
     public int getId() {
         return id;

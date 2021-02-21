@@ -17,9 +17,10 @@ import javax.jms.TextMessage;
 @Slf4j
 public class StandUpdateListener implements MessageListener {
 
-//    @Inject
+    //    @Inject
 //    private StandNamedBean standNamedBean;
-
+    @Inject
+    private TariffService tariffService;
     @Inject
     private TariffsBean tariffsBean;
     @EJB
@@ -36,13 +37,14 @@ public class StandUpdateListener implements MessageListener {
     }
 
     private void processMessage(Message message) throws JMSException {
-        System.out.println("message: "+message);
+        System.out.println("message: " + message);
         if (message instanceof TextMessage) {
             TextMessage textMessage = (TextMessage) message;
             String text = textMessage.getText();
             TariffViewForm tariffViewForm = jsonParser.readTariffDtoJSON(text);
+            tariffService.updateTariff(tariffViewForm);
             System.out.println(tariffViewForm);
-            System.out.println("TEXT = "+text);
+            System.out.println("TEXT = " + text);
             log.info("Message " + message.getJMSMessageID() + " has been processed");
         }
     }

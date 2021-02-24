@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.vermolae.network;
 
+import com.vermolae.json.StandUpdateListener;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.ActiveMQMessageConsumer;
@@ -34,7 +35,6 @@ public class RecieverConfigBean {
             connection.start();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Queue queue = session.createQueue(propertiesBean.getDestinationName());
-            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
             ActiveMQMessageConsumer messageConsumer = (ActiveMQMessageConsumer) session.createConsumer(queue);
             messageConsumer.setMessageListener(listener);
         } catch (JMSException e) {

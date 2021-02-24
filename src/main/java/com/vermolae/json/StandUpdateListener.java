@@ -1,6 +1,9 @@
-package com.example.demo;
+package com.vermolae.json;
 
 
+import com.vermolae.dto.TariffViewForm;
+import com.vermolae.service.TariffService;
+import com.vermolae.startup.TariffsBean;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -17,8 +20,6 @@ import javax.jms.TextMessage;
 @Slf4j
 public class StandUpdateListener implements MessageListener {
 
-    //    @Inject
-//    private StandNamedBean standNamedBean;
     @Inject
     private TariffService tariffService;
     @Inject
@@ -37,14 +38,11 @@ public class StandUpdateListener implements MessageListener {
     }
 
     private void processMessage(Message message) throws JMSException {
-        System.out.println("message: " + message);
         if (message instanceof TextMessage) {
             TextMessage textMessage = (TextMessage) message;
             String text = textMessage.getText();
             TariffViewForm tariffViewForm = jsonParser.readTariffDtoJSON(text);
-            tariffService.updateTariff(tariffViewForm);
-            System.out.println(tariffViewForm);
-            System.out.println("TEXT = " + text);
+                tariffService.updateTariff(tariffViewForm);
             log.info("Message " + message.getJMSMessageID() + " has been processed");
         }
     }

@@ -1,5 +1,8 @@
-package com.example.demo;
+package com.vermolae.service;
 
+import com.vermolae.json.TariffDeserializer;
+import com.vermolae.startup.TariffsBean;
+import com.vermolae.dto.TariffViewForm;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;

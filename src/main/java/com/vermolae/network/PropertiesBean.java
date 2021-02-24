@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.vermolae.network;
 
 import lombok.extern.slf4j.Slf4j;
 

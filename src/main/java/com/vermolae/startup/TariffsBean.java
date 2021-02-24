@@ -1,12 +1,14 @@
-package com.example.demo;
+package com.vermolae.startup;
 
+import com.vermolae.network.RecieverConfigBean;
+import com.vermolae.dto.TariffViewForm;
+import com.vermolae.service.TariffService;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -32,18 +34,14 @@ public class TariffsBean {
     @PostConstruct
     public void init() {
         recieverConfigBean.openConnection();
-//        System.out.println("OPENED!!!!!!!!!!!!");
         loadTariffs();
-//        for (TariffViewForm tariffViewForm:tariffs){
-//            System.out.println(tariffViewForm.getName());
-//        }
     }
 
     public void loadTariffs() {
         System.out.println("Load tariffs storage");
         tariffs = tariffService.getAll().stream()
                 .sorted(Comparator.comparing(TariffViewForm::getNumberOfContracts)
-                .reversed()).limit(3)
+                .reversed()).limit(5)
                 .collect(Collectors.toList());
     }
 }

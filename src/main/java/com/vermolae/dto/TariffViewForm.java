@@ -1,11 +1,10 @@
-package com.example.demo;
+package com.vermolae.dto;
 
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.vermolae.json.TariffDeserializer;
 import lombok.*;
 
-import java.util.Base64;
-import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
@@ -41,46 +40,6 @@ public class TariffViewForm {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    public double getTurnOnPrice() {
-//        return turnOnPrice;
-//    }
-//
-//    public void setTurnOnPrice(double turnOnPrice) {
-//        this.turnOnPrice = turnOnPrice;
-//    }
-//
-//    public String getPictureUrl() {
-//        return pictureUrl;
-//    }
-//
-//    public void setPictureUrl(String pictureUrl) {
-//        this.pictureUrl = pictureUrl;
-//    }
-
-//    public Set<Option> getOptions() {
-//        return options;
-//    }
-//
-//    public void setOptions(Set<Option> options) {
-//        this.options = options;
-//    }
-
-//    public double getPrice() {
-//        return price;
-//    }
-//
-//    public void setPrice(double price) {
-//        this.price = price;
-//    }
-//
-//    public boolean isDeprecated() {
-//        return deprecated;
-//    }
-//
-//    public void setDeprecated(boolean deprecated) {
-//        this.deprecated = deprecated;
-//    }
 
     public Long getNumberOfContracts() {
         return numberOfContracts;

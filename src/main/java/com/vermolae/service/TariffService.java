@@ -24,7 +24,6 @@ public class TariffService {
     public List<TariffViewForm> getAll() {
         final String url = "http://localhost:8099/allTariffs";
         ResponseEntity<TariffViewForm[]> response = restTemplate.getForEntity(url, TariffViewForm[].class);
-//        System.out.println("response.getBODY()!:"+response.getBody());
         return Arrays.asList(response.getBody());
     }
     public void updateTariff(TariffViewForm tariffViewForm){

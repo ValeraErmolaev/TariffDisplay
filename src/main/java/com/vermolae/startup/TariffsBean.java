@@ -38,7 +38,6 @@ public class TariffsBean {
     }
 
     public void loadTariffs() {
-        System.out.println("Load tariffs storage");
         tariffs = tariffService.getAll().stream()
                 .sorted(Comparator.comparing(TariffViewForm::getNumberOfContracts)
                 .reversed()).limit(5)
